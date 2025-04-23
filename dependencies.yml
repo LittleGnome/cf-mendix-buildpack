@@ -2,10 +2,11 @@
 dependencies:
   appdynamics:
     agent:
-      artifact: appdynamics/appdynamics-agent-1.8-{{ version }}.zip
+      artifact: appdynamics/AppServerAgent-1.8-{{ version }}.zip
+      version: 24.12.0.36528
     machine-agent:
-      artifact: appdynamics/appdynamics-machineagent-bundle-{{ version }}.zip
-    version: 22.1.0
+      artifact: appdynamics/machineagent-bundle-64bit-linux-{{ version }}.zip
+      version: 24.12.0.4485
   databroker:
     debezium:
       artifact: experimental/databroker/debezium-{{ version }}.tar.gz
@@ -20,10 +21,10 @@ dependencies:
     buildpack:
       alias: cf-datadog-sidecar
       artifact: datadog/datadog-cloudfoundry-buildpack-{{ version }}.zip
-      version: 4.37.0
+      version: 4.42.0
     trace-agent:
       artifact: datadog/dd-java-agent-{{ version }}.jar
-      version: 1.27.0
+      version: 1.45.2
   dynatrace:
     agent:
       artifact: "{{ url }}/e/{{ environment }}/api/v1/deployment/installer/agent/unix/paas/latest?include=java&bitness=64&Api-Token={{ token }}"
@@ -50,9 +51,9 @@ dependencies:
       vendor: Adoptium
       version:
         - "8": 8u392
-        - "11": 11.0.21
+        - "11": 11.0.23
         - "17": 17.0.9
-        - "21": 21.0.2
+        - "21": 21.0.3
   logs:
     mendix-logfilter:
       artifact: logs/mendix-logfilter-{{version}}.tar.gz
@@ -88,10 +89,10 @@ dependencies:
       version: 8.6.0
   nginx:
     artifact: nginx_{{ version }}_linux_x64_{{ fs }}_{{ commit }}.tgz
-    commit: 909b06a9
+    commit: b1316f75
     fs: cflinuxfs4
     cpe: cpe:2.3:a:f5:nginx:{{ version }}:*:*:*:*:*:*:*
-    version: 1.22.1
+    version: 1.26.1
   ruby:
     artifact: ruby/ruby_{{ version }}_linux_x64_{{ fs }}_{{ commit }}.tgz
     commit: 5fed98f8

@@ -347,7 +347,7 @@ class UrlDatabaseConfiguration(DatabaseConfiguration):
                 jdbc_params.update({"sslmode": "verify-full"})
         except Exception:
             raise Exception("Could not find database CA certificate in map")
-    
+
         if database_type == "PostgreSQL" and not self.url.startswith("jdbc:"):
             self.extract_inline_cert(jdbc_params, self.SSLCERT, "postgresql.crt")
             self.extract_inline_cert(jdbc_params, self.SSLKEY, "postgresql.pk8")
@@ -503,6 +503,7 @@ class SapHanaDatabaseConfiguration(DatabaseConfiguration):
         url = self.credentials.get("url", "")
         pattern = r"jdbc:sap://(?P<host>[^:]+):(?P<port>[0-9]+)/?(?P<q>\?(?P<params>.*))?$"  # noqa:C0301
         match = re.search(pattern, url)
+        q = None
         if match is None:
             logging.error("Unable to parse Hana JDBC url string for parameters")
             raise Exception("Unable to parse Hana JDBC url string for parameters")
